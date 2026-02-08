@@ -19,7 +19,6 @@ import { VideoData, PlaybackStats, WatchProgress } from './types';
 
 // Import data and utilities
 import { VIDEO_DATA } from './data/videos';
-import { getSimilarVideos, filterVideos } from './utils/helpers';
 import { INITIAL_WATCH_PROGRESS, INITIAL_MY_LIST } from './constants';
 
 // Import Netflix-styled components
@@ -74,10 +73,10 @@ const NetflixApp = () => {
   const [myList, setMyList] = useState<number[]>(INITIAL_MY_LIST);
   
   /** Watch progress tracking for "Continue Watching" feature */
-  const [watchProgress, setWatchProgress] = useState<WatchProgress[]>(INITIAL_WATCH_PROGRESS);
+  const [watchProgress] = useState<WatchProgress[]>(INITIAL_WATCH_PROGRESS);
   
   /** Playback analytics and performance metrics */
-  const [playbackStats, setPlaybackStats] = useState<PlaybackStats>({
+  const [playbackStats] = useState<PlaybackStats>({
     bufferCount: 0,
     watchTime: 0,
     startLatency: 0,
@@ -406,6 +405,18 @@ const NetflixApp = () => {
               myList={myList}
               allVideos={VIDEO_DATA}
             />
+
+            {/* Continue Watching */}
+            {continueWatchingVideos.length > 0 && (
+              <ContentRow
+                title="Continue Watching"
+                videos={continueWatchingVideos}
+                onVideoSelect={handleVideoSelect}
+                onAddToList={handleAddToList}
+                myList={myList}
+                allVideos={VIDEO_DATA}
+              />
+            )}
 
             {/* Top 10 */}
             <ContentRow
