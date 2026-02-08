@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #000;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Netflix-style smooth scrolling */
+* {
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbars but keep functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Custom scrollbar for main content */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Netflix red accent color utilities */
+@layer utilities {
+  .text-netflix {
+    color: #e50914;
+  }
+  
+  .bg-netflix {
+    background-color: #e50914;
+  }
+  
+  .border-netflix {
+    border-color: #e50914;
+  }
+  
+  .hover-scale-netflix {
+    transition: transform 0.3s ease;
+  }
+  
+  .hover-scale-netflix:hover {
+    transform: scale(1.5);
+    z-index: 10;
+  }
+}
+
+/* Prevent content shift on hover */
+.group\/row {
+  position: relative;
+}
+
+/* Smooth transitions for all interactive elements */
+button {
+  transition: all 0.2s ease;
+}
+
+/* Netflix-style focus states */
+button:focus,
+input:focus {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* Preview dropdown animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
